@@ -17,7 +17,7 @@ check := {
 
   val obtained = out.toString(charset).trim
   val expected =
-    """|--- snip ---
+    """|--- sn ip ---
        |{ "groupId": "org.scala-lang", "artifactId": { "name": "scala3-library", "maybeCrossName": "scala3-library_3" }, "version": "3.8.4", "sbtVersion": null, "scalaVersion": null, "configurations": null }
        |{ "groupId": "org.apache.commons", "artifactId": { "name": "commons-lang3", "maybeCrossName": null }, "version": "3.20.0", "sbtVersion": null, "scalaVersion": null, "configurations": null }
        |{ "MavenRepository": { "name": "public", "location": "https://repo1.maven.org/maven2/", "headers": [ ] } }
