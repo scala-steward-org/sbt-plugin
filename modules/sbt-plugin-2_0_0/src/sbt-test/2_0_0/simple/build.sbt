@@ -28,6 +28,6 @@ check := {
                   |Expected:\n$expected
                   |Obtained:\n$obtained""".stripMargin
     s.log.error(msg)
-    throw new Throwable
+    throw new Throwable(msg)
   }
 }
