@@ -2,8 +2,8 @@ name := "simple"
 scalaVersion := "3.8.4"
 libraryDependencies += "org.apache.commons" % "commons-lang3" % "3.20.0"
 
-lazy val check = taskKey[Unit]("")
-check := Def.uncached {
+@transient lazy val check = taskKey[Unit]("")
+check := {
   val s = state.value
   val e = Project.extract(s)
 
@@ -24,11 +24,10 @@ check := Def.uncached {
        |""".stripMargin.trim
 
   if (obtained != expected) {
-    s.log.error(s"""|Output mismatch!
-                    |Expected:\n$expected
-                    |Obtained:\n$obtained""".stripMargin)
+    val msg = s"""|Output mismatch!
+                  |Expected:\n$expected
+                  |Obtained:\n$obtained""".stripMargin
+    s.log.error(msg)
     throw new Throwable
-  } else {
-    s.log.info("Output matched!")
   }
 }

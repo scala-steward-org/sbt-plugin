@@ -3,8 +3,8 @@ scalaVersion := "3.8.4"
 credentials += Credentials("Some Realm", "artifacts.example.com", "user", "secret")
 externalResolvers += "Some Realm".at("artifacts.example.com")
 
-lazy val check = taskKey[Unit]("")
-check := Def.uncached {
+@transient lazy val check = taskKey[Unit]("")
+check := {
   val s = state.value
   val e = Project.extract(s)
 
@@ -25,11 +25,10 @@ check := Def.uncached {
        |""".stripMargin.trim
 
   if (obtained != expected) {
-    s.log.error(s"""|Output mismatch!
-                    |Expected:\n$expected
-                    |Obtained:\n$obtained""".stripMargin)
-    throw new Throwable
-  } else {
-    s.log.info("Output matched!")
+    val msg = s"""|Output mismatch!
+                  |Expected:\n$expected
+                  |Obtained:\n$obtained""".stripMargin
+    s.log.error(msg)
+    throw new Throwable(msg)
   }
 }
