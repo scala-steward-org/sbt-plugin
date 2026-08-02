@@ -40,6 +40,7 @@ lazy val `sbt-plugin-2_0_0` = myProject("sbt-plugin-2_0_0")
   .enablePlugins(SbtPlugin)
   .settings(
     scalaVersion := Scala3,
+    scriptedBufferLog := false,
     // scala-steward:off
     pluginCrossBuild / sbtVersion := "2.0.0"
     // scala-steward:on
@@ -49,6 +50,7 @@ lazy val `sbt-plugin-1_3_11` = myProject("sbt-plugin-1_3_11")
   .enablePlugins(SbtPlugin)
   .settings(
     scalaVersion := Scala212,
+    scriptedBufferLog := false,
     // scala-steward:off
     pluginCrossBuild / sbtVersion := "1.3.11"
     // scala-steward:on
@@ -58,6 +60,7 @@ lazy val `sbt-plugin-1_0_0` = myProject("sbt-plugin-1_0_0")
   .enablePlugins(SbtPlugin)
   .settings(
     scalaVersion := Scala212,
+    scriptedBufferLog := false,
     // scala-steward:off
     pluginCrossBuild / sbtVersion := "1.0.0"
     // scala-steward:on
